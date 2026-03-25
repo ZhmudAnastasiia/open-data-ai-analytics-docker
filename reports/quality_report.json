@@ -1,0 +1,122 @@
+{
+  "dataset_overview": {
+    "rows": 213,
+    "columns": 10
+  },
+  "required_columns": {
+    "present": [
+      "identifier",
+      "sportName",
+      "type",
+      "publisherName",
+      "title",
+      "dateAccepted",
+      "number",
+      "status",
+      "url"
+    ],
+    "missing": []
+  },
+  "missing_values": [
+    {
+      "column": "url",
+      "missing_count": 40,
+      "missing_pct": 18.78
+    },
+    {
+      "column": "dateAccepted",
+      "missing_count": 1,
+      "missing_pct": 0.47
+    },
+    {
+      "column": "sportName",
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    {
+      "column": "identifier",
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    {
+      "column": "type",
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    {
+      "column": "publisherName",
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    {
+      "column": "title",
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    {
+      "column": "publisherIdentifier",
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    {
+      "column": "number",
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    {
+      "column": "status",
+      "missing_count": 0,
+      "missing_pct": 0.0
+    }
+  ],
+  "duplicates": {
+    "full_duplicate_rows": 0,
+    "identifier_duplicates": 0,
+    "identifier_missing": 0
+  },
+  "date_quality": {
+    "invalid_or_missing_dateAccepted": 3,
+    "min_dateAccepted": "2013-04-01",
+    "max_dateAccepted": "2025-09-11"
+  },
+  "column_types": {
+    "identifier": "str",
+    "sportName": "str",
+    "type": "str",
+    "publisherName": "str",
+    "publisherIdentifier": "int64",
+    "title": "str",
+    "dateAccepted": "str",
+    "number": "str",
+    "status": "str",
+    "url": "str"
+  },
+  "status_distribution": {
+    "Чинний": 153,
+    "Втратив чинність": 53,
+    "Зі змінами": 7
+  },
+  "top_sports_by_frequency": {
+    "Грепплінг": 5,
+    "Парашутний спорт": 5,
+    "Пауерліфтинг": 4,
+    "Таеквон-До": 4,
+    "Веслування на байдарках і каное": 4,
+    "Панкратіон": 4,
+    "Армрестлінг": 4,
+    "Комбат самозахист ІСО": 3,
+    "Комбат Дзю-Дзюцу": 3,
+    "Таїландський бокс Муей Тай": 3,
+    "Боротьба самбо": 3,
+    "Альпінізм": 3,
+    "Гирьовий спорт": 3,
+    "Бадмінтон": 3,
+    "Джиу-джитсу": 3,
+    "Рукопашний бій": 3,
+    "Роликовий спорт": 3,
+    "Кунгфу": 3,
+    "Легка атлетика": 2,
+    "Військово-технологічний спорт": 2
+  },
+  "summary_text": "Структура даних загалом коректна: усі обов’язкові поля присутні, повних дублікатів записів не виявлено, ідентифікатори переважно унікальні. Основні проблеми пов’язані з пропусками в окремих полях і некоректним розпізнаванням частини дат."
+}

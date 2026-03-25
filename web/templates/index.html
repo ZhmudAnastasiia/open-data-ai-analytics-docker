@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Open Data AI Analytics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background: #f6f8fa;
+            color: #222;
+        }
+        h1, h2, h3 {
+            color: #1f4e79;
+        }
+        .card {
+            background: white;
+            border: 1px solid #d0d7de;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background: white;
+        }
+        th, td {
+            border: 1px solid #d0d7de;
+            padding: 8px;
+            text-align: left;
+            vertical-align: top;
+            font-size: 14px;
+        }
+        th {
+            background: #eef3f8;
+        }
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            background: #fafbfc;
+            border: 1px solid #d0d7de;
+            padding: 12px;
+            border-radius: 6px;
+        }
+        img {
+            max-width: 100%;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            margin-bottom: 16px;
+            background: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Контейнеризований аналітичний проєкт</h1>
+
+    <div class="card">
+        <h2>Опис</h2>
+        <p>
+            Проєкт демонструє повний цикл обробки відкритих даних:
+            завантаження CSV, імпорт у PostgreSQL, перевірку якості даних,
+            дослідження набору даних та побудову візуалізацій.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Попередній перегляд даних</h2>
+        {% if df_preview %}
+        <table>
+            <thead>
+                <tr>
+                    {% for col in columns %}
+                    <th>{{ col }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in df_preview %}
+                <tr>
+                    {% for col in columns %}
+                    <td>{{ row[col] }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>Дані ще недоступні.</p>
+        {% endif %}
+    </div>
+
+    <div class="card">
+        <h2>Звіт з якості даних</h2>
+        <pre>{{ quality_report }}</pre>
+    </div>
+
+    <div class="card">
+        <h2>Звіт з дослідження даних</h2>
+        <pre>{{ research_report }}</pre>
+    </div>
+
+    <div class="card">
+        <h2>Візуалізації</h2>
+        {% if plots %}
+            {% for plot in plots %}
+                <h3>{{ plot }}</h3>
+                <img src="/static_plot/{{ plot }}" alt="{{ plot }}">
+            {% endfor %}
+        {% else %}
+            <p>Графіки ще не згенеровані.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
