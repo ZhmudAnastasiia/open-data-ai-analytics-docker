@@ -21,15 +21,13 @@ services:
 
   data_load:
     build:
-      context: .
-      dockerfile: data_load/Dockerfile
-      network: host
+      context: ./data_load
+      dockerfile: Dockerfile
     container_name: data_load_service
     env_file:
       - .env
     depends_on:
-      db:
-        condition: service_healthy
+      - db
     volumes:
       - ./data:/app/data
       - ./reports:/app/reports
@@ -39,17 +37,14 @@ services:
 
   data_quality_analysis:
     build:
-      context: .
-      dockerfile: data_quality_analysis/Dockerfile
-      network: host
+      context: ./data_quality_analysis
+      dockerfile: Dockerfile
     container_name: data_quality_service
     env_file:
       - .env
     depends_on:
-      db:
-        condition: service_healthy
-      data_load:
-        condition: service_completed_successfully
+      - db
+      - data_load
     volumes:
       - ./reports:/app/reports
     networks:
@@ -57,17 +52,14 @@ services:
 
   data_research:
     build:
-      context: .
-      dockerfile: data_research/Dockerfile
-      network: host
+      context: ./data_research
+      dockerfile: Dockerfile
     container_name: data_research_service
     env_file:
       - .env
     depends_on:
-      db:
-        condition: service_healthy
-      data_load:
-        condition: service_completed_successfully
+      - db
+      - data_load
     volumes:
       - ./reports:/app/reports
     networks:
@@ -75,19 +67,15 @@ services:
 
   visualization:
     build:
-      context: .
-      dockerfile: visualization/Dockerfile
-      network: host
+      context: ./visualization
+      dockerfile: Dockerfile
     container_name: visualization_service
     env_file:
       - .env
     depends_on:
-      db:
-        condition: service_healthy
-      data_load:
-        condition: service_completed_successfully
-      data_research:
-        condition: service_completed_successfully
+      - db
+      - data_load
+      - data_research
     volumes:
       - ./reports:/app/reports
       - ./plots:/app/plots
@@ -96,21 +84,16 @@ services:
 
   web:
     build:
-      context: .
-      dockerfile: web/Dockerfile
-      network: host
+      context: ./web
+      dockerfile: Dockerfile
     container_name: web_service
     env_file:
       - .env
     depends_on:
-      db:
-        condition: service_healthy
-      data_quality_analysis:
-        condition: service_completed_successfully
-      data_research:
-        condition: service_completed_successfully
-      visualization:
-        condition: service_completed_successfully
+      - db
+      - data_quality_analysis
+      - data_research
+      - visualization
     ports:
       - "8000:8000"
     volumes:
