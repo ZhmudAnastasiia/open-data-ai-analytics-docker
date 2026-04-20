@@ -80,3 +80,72 @@ docker compose logs -f
 ## Примітка
 Після запуску відкрий у браузері:
 http://localhost:8000
+
+
+# Open Data AI Analytics Deployment on Azure.
+
+## Deployment Steps
+
+### 1. Open Azure Cloud Shell
+
+Open **Azure Portal** and start **Azure Cloud Shell**.
+
+### 2. Clone the Repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/open-data-ai-analytics-docker.git
+cd open-data-ai-analytics-docker/infra/terraform
+```
+
+### 3. Initialize and Deploy Terraform
+
+```bash
+terraform init
+terraform fmt
+terraform validate
+terraform apply
+```
+
+Type `yes` to confirm resource creation.
+
+## What Terraform Creates
+
+* Resource Group
+* Virtual Network
+* Subnet
+* Public IP
+* Network Security Group
+* Network Interface
+* Linux Virtual Machine
+
+## Automatic VM Configuration
+
+Using **cloud-init**, the VM automatically:
+
+* installs Docker
+* clones the repository
+* starts the application with:
+
+```bash
+docker compose up -d
+```
+
+This deploys:
+
+* PostgreSQL database
+* analytics services
+* web interface
+
+## Access the Application
+
+After deployment, open:
+
+```bash
+http://PUBLIC_IP:8000
+```
+
+`PUBLIC_IP` is shown in Terraform output.
+
+## Result
+
+The project provides a fully automated cloud deployment workflow where infrastructure provisioning and application startup are completed without manual server configuration.
