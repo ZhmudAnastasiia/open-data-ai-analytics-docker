@@ -19,7 +19,7 @@ spec:
       containers:
         - name: myapp
 
-          image: YOUR_DOCKERHUB_USERNAME/myapp:v1
+          image: zhmudanastasiia/web:latest
 
           ports:
             - containerPort: 3000
