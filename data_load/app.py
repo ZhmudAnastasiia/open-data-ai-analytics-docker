@@ -75,7 +75,7 @@ def main():
     print(f"Writing data to table '{TABLE_NAME}'...")
     df.to_sql(TABLE_NAME, engine, if_exists="replace", index=False)
 
-    print("Data loaded into PostgreSQL not successfull.")
+    print("Data loaded into PostgreSQL successfully.")
 
 
 if __name__ == "__main__":
